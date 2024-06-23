@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CreditControl - APP</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="script.js"></script>
+    <style>
+      .activeBtn{
+        color: white;
+        background: #60a5fa;
+        border-color: white !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="w-full flex justify-center">
+      <div class="w-full max-w-lg p-2 mt-8 rounded-lg bg-gray-100">
+        <h1 class="text-2xl font-bold text-center">Control de Credito</h1>
+        <!--CLIENTES SECTION-->
+        <div class="p-2 bg-gray-200 mt-4 rounded">
+          <form action="#" class="space-y-4 hidden" id="clienteForm">
+            <h2 class="text-xl mb-4 font-bold">Nuevo Cliente</h2>
+            <label for="nombre" class="w-full">
+              Nombre
+              <input
+                type="text"
+                class="w-full p-2 rounded mt-2"
+                placeholder="Nombre..."
+                name="nombre"
+                required
+                id="nombre"
+              />
+            </label>
+            <div class="flex gap-2">
+              <button
+                class="p-2 flex-1 bg-blue-400 rounded-lg w-full text-white"
+              >
+                Agregar
+              </button>
+              <button
+                type="button"
+                id="btnCancelNewCliente"
+                class="p-2 bg-red-500 rounded-lg px-4 text-xl leading-3 align-middle text-white"
+              >
+                x
+              </button>
+            </div>
+          </form>
+          <div class="" id="clienteView">
+            <div class="flex justify-between">
+              <h2 class="text-xl rounded font-bold">Clientes</h2>
+              <button
+                id="btnNewCliente"
+                class="px-4 py-3 leading-3 text-lg text-white bg-blue-400 rounded-lg align-middle"
+              >
+                New
+              </button>
+            </div>
+            <select
+              name="cliente"
+              id="clienteList"
+              class="w-full mt-4 px-3 py-2 bg-slate-100 text-lg font-semibold"
+            >
+            </select>
+            <div class="mt-4">
+              <span class="text-xs text-gray-600">Saldo</span>
+              <div class="grid grid-cols-2">
+                <div class="">
+                  <span class="text-3xl  font-semibold leading-4" id="saldoBssDisplay"
+                    >0.0</span
+                  >
+                  <span class="text-lg font-semibold ">Bss</span>
+                </div>
+                <div>
+                  <span class="text-3xl font-semibold leading-4" id="saldoDolarDisplay">0.0</span>
+                  <span class="text-lg font-semibold">$</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--LIST TRANS SECTION-->
+        <div class="mt-4 bg-gray-200 p-2 rounded">
+          <form action="#" class="hidden" id="transacForm">
+            <h2 class="text-xl mb-4 font-bold">Nueva Transacción</h2>
+            <div>
+              <span>Tipo</span>
+              <div class="grid grid-cols-2 gap-3 my-1" >
+                <button
+                  id="btnCreditoSelect"
+                  value="Credito"
+                  type="button"
+                  class="p-2 text-xl font-bold rounded-lg border border-2 border-gray-900"
+                >
+                  Credito
+                </button>
+                <button
+                  id="btnDebitoSelect"
+                  value="Debito"
+                  type="button"
+                  class="p-2 text-xl font-bold border border-gray-900 rounded-lg border-2"
+                >
+                  Debito
+                </button>
+              </div>
+            </div>
+            <div>
+              <span>Divisa</span>
+              <div class="grid grid-cols-2 gap-3 my-1" id="optionBtnGroup">
+                <button
+                  id="btnDolarSelect"
+                  value="$"
+                  type="button"
+                  class="p-2 text-xl font-bold border border-gray-900 rounded-lg border-2"
+                >
+                  Dolar
+                </button>
+                <button
+                  id="btnBssSelect"
+                  value="Bss"
+                  type="button"
+                  class="p-2 text-xl font-bold rounded-lg border border-2 border-gray-900 "
+                >
+                  Bss
+                </button>
+              </div>
+            </div>
+            <label for="monto" class="w-full">
+              Monto
+              <input
+                type="number"
+                class="w-full p-2 rounded mt-2"
+                placeholder="Monto..."
+                name="monto"
+                id="monto"
+                required
+              />
+            </label>
+            <label for="nota" class="w-full mt-2">
+              Nota
+              <input
+                required
+                type="text"
+                class="w-full p-2 rounded mt-2"
+                placeholder="Nota..."
+                name="nota"
+                id="nota"
+              />
+            </label>
+            <div class="flex gap-2">
+              <button
+                class="p-2 bg-blue-400 rounded-lg w-full text-white mt-2 flex-1"
+              >
+                Agregar
+              </button>
+              <button
+                id="btnCancelNewTransac"
+                class="p-2 mt-2 bg-red-500 rounded-lg px-4 text-xl leading-3 align-middle text-white"
+              >
+                x
+              </button>
+            </div>
+          </form>
+
+          <!--TRANSACCTION VIEW-->
+          <div class="" id="transacView">
+            <div class="flex justify-between">
+              <h2 class="text-xl rounded font-bold">Transacciones</h2>
+              <button
+                id="btnNewTransac"
+                class="px-4 py-3 leading-3 text-lg text-white bg-blue-400 rounded-lg"
+              >
+                New
+              </button>
+            </div>
+            <div class="overflow-x-scroll">
+              <div class="mt-4 text-xs min-w-[400px]" id="transacList">
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
